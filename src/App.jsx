@@ -19,9 +19,13 @@ function App() {
 
   useEffect(() => {
     const fetchTasks = async () => {
-      const tasks = await getAllTasks();
-      const userTasks = tasks.filter((task) => task.username === user.username);
-      setTaskList(userTasks);
+      if (user) {
+        const tasks = await getAllTasks();
+        const userTasks = tasks.filter(
+          (task) => task.username === user.username
+        );
+        setTaskList(userTasks);
+      }
     };
     fetchTasks();
   }, [user]);

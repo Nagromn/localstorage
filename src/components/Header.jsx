@@ -24,9 +24,12 @@ export const Header = () => {
         <img src={Logo} alt="Taskmate Logo" />
         <span>Taskmate</span>
         {user && (
-          <button className="logout-btn" onClick={handleLogout}>
-            Déconnexion
-          </button>
+          <>
+            <span className="username">{user.username} |</span>
+            <button className="logout-btn" onClick={handleLogout}>
+              Déconnexion
+            </button>
+          </>
         )}
       </div>
       <div className="themeSelector">

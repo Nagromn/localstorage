@@ -1,11 +1,16 @@
-import { useEffect } from "react";
-import { useState } from "react";
 import Logo from "../assets/logo.png";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../AuthContext";
 
 export const Header = () => {
   const [theme, setTheme] = useState(
     JSON.parse(localStorage.getItem("theme")) || "medium"
   );
+  const { user, logout } = useContext(AuthContext);
+
+  const handleLogout = async () => {
+    await logout();
+  };
 
   useEffect(() => {
     localStorage.setItem("theme", JSON.stringify(theme));
@@ -18,6 +23,11 @@ export const Header = () => {
       <div className="logo">
         <img src={Logo} alt="Taskmate Logo" />
         <span>Taskmate</span>
+        {user && (
+          <button className="logout-btn" onClick={handleLogout}>
+            Déconnexion
+          </button>
+        )}
       </div>
       <div className="themeSelector">
         <span

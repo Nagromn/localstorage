@@ -73,7 +73,7 @@ function App() {
           />
           <ShowTask
             taskList={taskList}
-            setTaskLisk={setTaskList}
+            setTaskList={setTaskList}
             task={task}
             setTask={setTask}
             handleDeleteTask={handleDeleteTask}
